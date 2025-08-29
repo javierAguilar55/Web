@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Tours por Departamento - Tours Tours</title>
+    <link rel="stylesheet" href="../templates/styles.css" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="home.html">Home</a>
+        <a href="destinos.html">Destinos</a>
+        <a href="tours.html">Tours</a>
+        <a href="contacto.html">Contacto</a>
+        <a href="reservas.html">Reservas</a>
+      </nav>
+    </header>
+    <main>
+      <h1>Tours por Departamento</h1>
+      <p>
+        Descubre los mejores tours de Bolivia, organizados por departamento.
+        Elige tu destino y vive una experiencia inolvidable.
+      </p>
+
+      <!-- Barra de búsqueda y filtros -->
+      <form class="tour-filters">
+        <span class="tour-filters-icon">🔍</span>
+        <input
+          type="text"
+          class="tour-filters-input"
+          placeholder="Buscar tour, destino..."
+        />
+        <select class="tour-filters-select">
+          <option value="">Dificultad</option>
+          <option value="facil">Fácil</option>
+          <option value="media">Media</option>
+          <option value="dificil">Difícil</option>
+        </select>
+        <select class="tour-filters-select">
+          <option value="">Duración</option>
+          <option value="corta">Corta</option>
+          <option value="media">Media</option>
+          <option value="larga">Larga</option>
+        </select>
+        <button type="submit" class="tour-filters-btn">Aplicar filtros</button>
+      </form>
+
+      <!-- La Paz -->
+      <section class="tours-depto" id="lapaz">
+        <h2>La Paz</h2>
+        <p>
+          La Paz te ofrece tours de aventura, cultura y naturaleza en el corazón
+          de los Andes.
+        </p>
+        <div class="tours-gallery">
+          <div class="tour-card">
+            <img
+              src="../assets/img/tours/La-Paz/Lago-Titicaca.jfif"
+              alt="Lago Titicaca"
+            />
+            <h3>Lago Titicaca</h3>
+          </div>
+          <div class="tour-card">
+            <img
+              src="../assets/img/tours/La-Paz/Parque-Madidi.jpg"
+              alt="Parque Madidi"
+            />
+            <h3>Parque Madidi</h3>
+          </div>
+          <div class="tour-card">
+            <img
+              src="../assets/img/tours/La-Paz/Valle-Luna.jfif"
+              alt="Valle de la Luna"
+            />
+            <h3>Valle de la Luna</h3>
+          </div>
+        </div>
+      </section>
+
+      <!-- Cochabamba -->
+      <section class="tours-depto" id="cochabamba">
+        <h2>Cochabamba</h2>
+        <p>
+          Disfruta de tours culturales, naturales y gastronómicos en la ciudad
+          de la eterna primavera.
+        </p>
+        <div class="tours-gallery">
+          <div class="tour-card">
+            <img
+              src="../assets/img/tours/Cochabamba/Cristo-Concordia.jpg"
+              alt="Cristo de la Concordia"
+            />
+            <h3>Cristo de la Concordia</h3>
+          </div>
+          <div class="tour-card">
+            <img
+              src="../assets/img/tours/Cochabamba/Toro-Toro.jpg"
+              alt="Toro Toro"
+            />
+            <h3>Toro Toro</h3>
+          </div>
+          <div class="tour-card">
+            <img
+              src="../assets/img/tours/Cochabamba/Parque-Tunari.jpg"
+              alt="Parque Tunari"
+            />
+            <h3>Parque Tunari</h3>
+          </div>
+        </div>
+      </section>
+
+      <!-- Oruro -->
+      <section class="tours-depto" id="oruro">
+        <h2>Oruro</h2>
+        <p>
+          Vive la cultura y la naturaleza altiplánica con tours únicos en Oruro.
+        </p>
+        <div class="tours-gallery">
+          <div class="tour-card">
+            <img
+              src="../assets/img/tours/Oruro/Carnaval-Oruro.jpg"
+              alt="Carnaval de Oruro"
+            />
+            <h3>Carnaval de Oruro</h3>
+          </div>
+          <div class="tour-card">
+            <img
+              src="../assets/img/tours/Oruro/Parque-Sajama.jpg"
+              alt="Parque Sajama"
+            />
+            <h3>Parque Sajama</h3>
+          </div>
+        </div>
+      </section>
+
+      <!-- Potosí -->
+      <section class="tours-depto" id="potosi">
+        <h2>Potosí</h2>
+        <p>
+          Descubre la historia y los paisajes de Potosí con tours a sus
+          principales atractivos.
+        </p>
+        <div class="tours-gallery">
+          <div class="tour-card">
+            <img
+              src="../assets/img/tours/Potosi/Casa-Moneda.jpg"
+              alt="Casa de la Moneda"
+            />
+            <h3>Casa de la Moneda</h3>
+          </div>
+          <div class="tour-card">
+            <img
+              src="../assets/img/tours/Potosi/Salar-Uyuni.jpg"
+              alt="Salar de Uyuni"
+            />
+            <h3>Salar de Uyuni</h3>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sucre (Chuquisaca) -->
+      <section class="tours-depto" id="sucre">
+        <h2>Sucre</h2>
+        <p>
+          La capital constitucional de Bolivia, con tours históricos y
+          culturales únicos.
+        </p>
+        <div class="tours-gallery">
+          <div class="tour-card">
+            <img
+              src="../assets/img/tours/Chuquisaca/Casa-Libertad.jfif"
+              alt="Casa de la Libertad"
+            />
+            <h3>Casa de la Libertad</h3>
+          </div>
+          <div class="tour-card">
+            <img src="../assets/img/tours/Chuquisaca/Sucre.jpg" alt="Sucre" />
+            <h3>Sucre</h3>
+          </div>
+        </div>
+      </section>
+
+      <!-- Santa Cruz -->
+      <section class="tours-depto" id="santacruz">
+        <h2>Santa Cruz</h2>
+        <p>
+          Explora la biodiversidad y cultura de Santa Cruz con tours a sus
+          principales destinos.
+        </p>
+        <div class="tours-gallery">
+          <div class="tour-card">
+            <img
+              src="../assets/img/tours/Santa-Cruz/Fuerte-Samaipata.jpg"
+              alt="Fuerte de Samaipata"
+            />
+            <h3>Fuerte de Samaipata</h3>
+          </div>
+          <div class="tour-card">
+            <img
+              src="../assets/img/tours/Santa-Cruz/Parque-Amboro.jfif"
+              alt="Parque Amboró"
+            />
+            <h3>Parque Amboró</h3>
+          </div>
+          <div class="tour-card">
+            <img
+              src="../assets/img/tours/Santa-Cruz/Misiones-Jesuiticas-Chiquitos.jpg"
+              alt="Misiones Jesuíticas de Chiquitos"
+            />
+            <h3>Misiones Jesuíticas de Chiquitos</h3>
+          </div>
+        </div>
+      </section>
+
+      <!-- Beni -->
+      <section class="tours-depto" id="beni">
+        <h2>Beni</h2>
+        <p>
+          Beni es naturaleza pura, ríos, selva y cultura amazónica. Un destino
+          ideal para el ecoturismo y la aventura.
+        </p>
+        <div class="tours-gallery">
+          <div class="tour-card">
+            <img
+              src="../assets/img/tours/Beni/Pesca-Deportiva.jfif"
+              alt="Pesca Deportiva"
+            />
+            <h3>Pesca Deportiva</h3>
+          </div>
+          <div class="tour-card">
+            <img
+              src="../assets/img/tours/Beni/Rurrenabaque.png"
+              alt="Rurrenabaque"
+            />
+            <h3>Rurrenabaque</h3>
+          </div>
+          <div class="tour-card">
+            <img src="../assets/img/tours/Beni/Trinidad.jpg" alt="Trinidad" />
+            <h3>Trinidad</h3>
+          </div>
+        </div>
+      </section>
+
+      <!-- Pando -->
+      <section class="tours-depto" id="pando">
+        <h2>Pando</h2>
+        <p>
+          Pando es la puerta de entrada a la Amazonía boliviana, con paisajes
+          selváticos y ríos caudalosos.
+        </p>
+        <div class="tours-gallery">
+          <div class="tour-card">
+            <img
+              src="../assets/img/tours/Pando/Ecoturismo-Amazonas.jpg"
+              alt="Ecoturismo Amazonas"
+            />
+            <h3>Ecoturismo Amazonas</h3>
+          </div>
+          <div class="tour-card">
+            <img
+              src="../assets/img/tours/Pando/Navegacion-Rio-Manuripi.jpg"
+              alt="Navegación Río Manuripi"
+            />
+            <h3>Navegación Río Manuripi</h3>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tarija -->
+      <section class="tours-depto" id="tarija">
+        <h2>Tarija</h2>
+        <p>
+          Descubre los valles y la cultura de Tarija con tours a sus principales
+          atractivos.
+        </p>
+        <div class="tours-gallery">
+          <div class="tour-card">
+            <img
+              src="../assets/img/tours/Tarija/Cordillera-Sama.jpg"
+              alt="Cordillera de Sama"
+            />
+            <h3>Cordillera de Sama</h3>
+          </div>
+          <div class="tour-card">
+            <img
+              src="../assets/img/tours/Tarija/Ruta-Vino.jpg"
+              alt="Ruta del Vino"
+            />
+            <h3>Ruta del Vino</h3>
+          </div>
+          <div class="tour-card">
+            <img
+              src="../assets/img/tours/Tarija/San-Lorenzo.jpg"
+              alt="San Lorenzo"
+            />
+            <h3>San Lorenzo</h3>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <a href="home.html">Volver al Home</a>
+      <p>&copy; 2025 Tours Tours</p>
+    </footer>
+  </body>
+</html>
