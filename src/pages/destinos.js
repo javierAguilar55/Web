@@ -77,7 +77,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // Redireccionar los botones Reservar de cada destino-card
   document.querySelectorAll('.reservar-destino-btn').forEach(btn => {
     btn.onclick = function() {
-      window.location.href = 'reservas.html';
+      const card = btn.closest('.destino-card');
+      const nombre = card.querySelector('h3').textContent;
+      window.location.href = `reservas.html?destino=${encodeURIComponent(nombre)}`;
     };
   });
 });

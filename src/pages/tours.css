@@ -150,7 +150,7 @@ footer {
 /* HERO y título */
 .tours-hero {
   text-align: center;
-  margin-top: 2.5rem;
+  margin-top: 0 !important;
   margin-bottom: 1.5rem;
 }
 .tours-title {
@@ -209,7 +209,7 @@ footer {
   flex-wrap: wrap;
   gap: 2.2rem;
   justify-content: center;
-  margin-top: 2.5rem;
+  margin-top: 0 !important;
   margin-bottom: 2.5rem;
 }
 
@@ -323,6 +323,14 @@ body {
   margin: 0;
   padding: 0;
   color: #2d3a4b;
+  padding-top: 80px;
+
+}
+
+@media (max-width: 900px) {
+  body {
+    padding-top: 110px;
+  }
 }
 
 header {
@@ -391,12 +399,17 @@ footer a {
   margin-right: 10px;
 }
 
-@media (max-width: 700px) {
-  .tours-list {
-    flex-direction: column;
-    align-items: center;
-  }
-  .destacados {
-    padding: 0 4vw;
-  }
+.navbar-row {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.tours-hero,
+main {
+  margin-top: 0 !important;
 }
