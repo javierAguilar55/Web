@@ -24,6 +24,7 @@ body {
   padding: 0;
   color: #2d3a4b;
 }
+
 /* --- FOOTER --- */
 footer {
   background: #23262b;
@@ -85,7 +86,7 @@ footer {
 /* HERO y título */
 .destinos-hero {
   text-align: center;
-  margin-top: 2.5rem;
+  margin-top: 4rem; /* Más espacio arriba */
   margin-bottom: 1.5rem;
 }
 .destinos-title {
@@ -257,6 +258,23 @@ footer {
     margin-top: 4px;
   }
 }
+.navbar-row {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+body {
+  padding-top: 140px;
+}
+@media (max-width: 900px) {
+  body {
+    padding-top: 110px;
+  }
+}
 /* Estilos generales para la página de destinos */
 body {
   font-family: 'Segoe UI', Arial, sans-serif;
@@ -269,7 +287,7 @@ body {
 header {
   background: #fff;
   box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-  padding: 18px 0 10px 0;
+  padding: 18px 0 24px 0; /* Más espacio abajo */
   display: flex;
   flex-direction: column;
   align-items: center;

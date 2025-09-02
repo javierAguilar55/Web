@@ -143,11 +143,16 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 3.5rem;
+  gap: 2.5rem;
   margin-bottom: 0.5rem;
-  padding: 18px 0 10px 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
   background: #fff;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  padding: 18px 0 10px 0;
 }
 .logo-img {
   height: 82px;
@@ -455,12 +460,21 @@ footer a {
   margin-right: 10px;
 }
 
-@media (max-width: 700px) {
-  .destinos-list, .tours-list {
-    flex-direction: column;
-    align-items: center;
-  }
-  .destacados, .about-us, .testimonios {
-    padding: 0 4vw;
-  }
+.navbar-row {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: #fff; /* O el color de fondo que prefieras */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+body {
+  padding-top: 90px; /* Ajusta según la altura del navbar */
+}
+
+.main-carousel,
+section.main-carousel,
+main {
+  margin-top: 0 !important;
 }

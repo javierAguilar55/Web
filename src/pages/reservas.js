@@ -1,5 +1,19 @@
 // Buscador navbar (solo si existe)
 document.addEventListener('DOMContentLoaded', () => {
+  // Autocompletar el select de tour si viene por parámetro
+  const params = new URLSearchParams(window.location.search);
+  const tourParam = params.get('tour') || params.get('destino');
+  if (tourParam) {
+    const select = document.getElementById('tour');
+    if (select) {
+      for (const option of select.options) {
+        if (option.textContent.trim().toLowerCase() === tourParam.trim().toLowerCase()) {
+          option.selected = true;
+          break;
+        }
+      }
+    }
+  }
   const navbarInput = document.querySelector('.navbar-search');
   const navbarBtn = document.querySelector('.navbar-search-btn');
   if (navbarInput && navbarBtn) {
@@ -16,22 +30,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
-// Página: validación de formulario de reservas
-import { validateInput } from '../atoms/input.js';
-
 document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('input[required], textarea[required]').forEach(input => {
-    validateInput(input, input.type);
-  });
-
   // Mensaje de reserva enviada
   const form = document.querySelector('.reservas-form form');
-  form.addEventListener('submit', function(e) {
-    e.preventDefault();
-    mostrarMensajeReserva();
-    form.reset();
-  });
-
+  if (form) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      mostrarMensajeReserva();
+      form.reset();
+    });
+  }
   function mostrarMensajeReserva() {
     let mensaje = document.createElement('div');
     mensaje.className = 'reserva-mensaje-exito';

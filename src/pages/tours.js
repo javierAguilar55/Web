@@ -78,7 +78,9 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.tour-btn').forEach(btn => {
     btn.textContent = 'Reservar';
     btn.onclick = function() {
-      window.location.href = 'reservas.html';
+      const card = btn.closest('.tour-card');
+      const nombre = card.querySelector('h3').textContent;
+      window.location.href = `reservas.html?tour=${encodeURIComponent(nombre)}`;
     };
   });
 });
