@@ -1,3 +1,62 @@
+/* --- FILTRO DESTINOS MODERNO --- */
+.destino-filters {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: #23262b;
+  border-radius: 12px;
+  padding: 18px 24px 18px 24px;
+  margin: 32px auto 24px auto;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  max-width: 900px;
+  justify-content: center;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.destino-filters-input {
+  padding: 8px 16px;
+  border: 1.5px solid #444;
+  border-radius: 6px;
+  font-size: 1rem;
+  background: #23262b;
+  color: #bfc4d0;
+  outline: none;
+  min-width: 180px;
+  transition: border 0.2s;
+}
+.destino-filters-input:focus {
+  border: 1.5px solid #ff6b3d;
+}
+.destino-filters-select {
+  padding: 8px 16px;
+  border: 1.5px solid #444;
+  border-radius: 6px;
+  font-size: 1rem;
+  background: #23262b;
+  color: #bfc4d0;
+  outline: none;
+  min-width: 140px;
+  transition: border 0.2s;
+}
+.destino-filters-select:focus {
+  border: 1.5px solid #ff6b3d;
+}
+.destino-filters-btn {
+  padding: 8px 22px;
+  background: #ff6b3d;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s;
+  box-shadow: 0 2px 8px rgba(255,107,61,0.08);
+}
+.destino-filters-btn:hover {
+  background: #ff4c1a;
+}
 .footer-section.social {
   display: flex;
   flex-direction: column;
