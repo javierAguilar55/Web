@@ -23,10 +23,7 @@
           <a href="contacto.html">Contacto</a>
           <a href="reservas.html">Reservas</a>
         </nav>
-        <div class="search-bar">
-          <input type="text" class="input navbar-search" placeholder="Buscar tour o destino" />
-          <button class="btn navbar-search-btn">Buscar</button>
-        </div>
+  <!-- Buscador navbar eliminado -->
       </div>
     </header>
 
@@ -37,14 +34,20 @@
           Descubre lugares impresionantes, desde glaciares remotos hasta selvas exuberantes, cada uno prometiendo una aventura inolvidable.
         </p>
       </section>
-      <div class="destinos-filtros">
-        <button class="filtro-btn active">Todos</button>
-        <button class="filtro-btn">Montañas</button>
-        <button class="filtro-btn">Selvas</button>
-        <button class="filtro-btn">Desiertos</button>
-        <button class="filtro-btn">Costas</button>
-        <button class="filtro-btn">Glaciares</button>
-      </div>
+      <form class="destino-filters" style="display: flex; align-items: center; gap: 12px; background: #26292e; border-radius: 12px; padding: 18px 18px 18px 18px; margin: 24px 0 18px 0;">
+        <input type="text" class="destino-filters-input" placeholder="Buscar destino..." style="background: #23262b; color: #bfc4d0; border: 1px solid #444; border-radius: 6px; padding: 8px 14px; font-size: 1rem; min-width: 180px;" />
+        <select class="destino-filters-select" style="background: #23262b; color: #bfc4d0; border: 1px solid #444; border-radius: 6px; padding: 8px 14px; font-size: 1rem;">
+          <option value="">Tipo de lugar</option>
+          <option value="montanas">Montañas</option>
+          <option value="selvas">Selvas</option>
+          <option value="desiertos">Desiertos</option>
+          <option value="costas">Costas</option>
+          <option value="glaciares">Glaciares</option>
+          <option value="lagunas">Lagunas</option>
+          <option value="ciudades">Ciudades</option>
+        </select>
+        <button type="submit" class="destino-filters-btn" style="background: #ff6b3d; color: #fff; border: none; border-radius: 6px; padding: 8px 22px; font-size: 1rem; cursor: pointer; transition: background 0.2s;">Aplicar filtros</button>
+      </form>
       <div class="destinos-gallery">
         <div class="destino-card atom" data-category="Desiertos" data-info="Ubicación: Potosí y Oruro. Mejor época: mayo-septiembre. Actividades: tours en 4x4, fotografía, visita a islas de cactus, observación de estrellas.">
           <img src="../assets/img/destinations/salar-uyuni.jpg" alt="Salar de Uyuni" />

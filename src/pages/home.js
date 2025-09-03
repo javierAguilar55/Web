@@ -3,12 +3,24 @@ document.addEventListener('DOMContentLoaded', () => {
   const navbarInput = document.querySelector('.navbar-search');
   const navbarBtn = document.querySelector('.navbar-search-btn');
   if (navbarInput && navbarBtn) {
+    function normalizar(str) {
+      return (str || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+    }
     function filtrarHome() {
-      const valor = (navbarInput.value || '').toLowerCase().trim();
-      document.querySelectorAll('.destino-card, .card-content, .destacados .section-title').forEach(card => {
-        const texto = card.textContent.toLowerCase();
+      const valor = normalizar(navbarInput.value || '').trim();
+      const cards = document.querySelectorAll('.destino-card, .tour-card');
+      cards.forEach(card => {
+        let texto = normalizar(card.textContent);
+        const img = card.querySelector('img');
+        if (img) {
+          if (img.alt) texto += ' ' + normalizar(img.alt);
+          if (img.src) texto += ' ' + normalizar(img.src);
+        }
         card.style.display = texto.includes(valor) ? '' : 'none';
       });
+      if (!valor) {
+        cards.forEach(card => card.style.display = '');
+      }
     }
     navbarBtn.onclick = filtrarHome;
     navbarInput.addEventListener('keyup', function(e) {
