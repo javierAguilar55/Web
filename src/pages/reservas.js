@@ -31,22 +31,19 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 document.addEventListener('DOMContentLoaded', () => {
-  // Mensaje de reserva enviada
+  // Mostrar mensaje de envío exitoso después de enviar el formulario
   const form = document.querySelector('.reservas-form form');
   if (form) {
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      mostrarMensajeReserva();
-      form.reset();
+    form.addEventListener('submit', function() {
+      setTimeout(() => {
+        let mensaje = document.createElement('div');
+        mensaje.className = 'reserva-mensaje-exito';
+        mensaje.textContent = '¡Reserva enviada exitosamente! Nos contactaremos contigo pronto.';
+        form.parentElement.appendChild(mensaje);
+        setTimeout(() => {
+          mensaje.remove();
+        }, 3500);
+      }, 100);
     });
-  }
-  function mostrarMensajeReserva() {
-    let mensaje = document.createElement('div');
-    mensaje.className = 'reserva-mensaje-exito';
-    mensaje.textContent = '¡Reserva enviada exitosamente! Nos contactaremos contigo pronto.';
-    form.parentElement.appendChild(mensaje);
-    setTimeout(() => {
-      mensaje.remove();
-    }, 3500);
   }
 });
