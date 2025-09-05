@@ -1,0 +1,35 @@
+/* Estilo para la barra de búsqueda (search-bar) */
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 10px 0;
+}
+
+.search-bar .input {
+  padding: 7px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  outline: none;
+  transition: border 0.2s;
+}
+
+.search-bar .input:focus {
+  border: 1.5px solid #2d3a4b;
+}
+
+.search-bar .btn {
+  padding: 7px 16px;
+  background: #2d3a4b;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.search-bar .btn:hover {
+  background: #1a2230;
+}
