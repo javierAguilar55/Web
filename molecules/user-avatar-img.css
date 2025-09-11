@@ -1,0 +1,28 @@
+.user-avatar-img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 54px;
+  height: 54px;
+  min-width: 36px;
+  min-height: 36px;
+  max-width: 90px;
+  max-height: 90px;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #252424;
+  background: #eafeea;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(30,40,60,0.10);
+  margin: 0 auto;
+  transition: width 0.2s, height 0.2s, font-size 0.2s;
+  cursor: default;
+  user-select: none;
+}
+@media (max-width: 600px) {
+  .user-avatar-img {
+    width: 36px;
+    height: 36px;
+    font-size: 1.2rem;
+  }
+}

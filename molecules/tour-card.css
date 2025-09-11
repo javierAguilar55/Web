@@ -1,0 +1,11 @@
+.tour-card .tour-btn {
+  display: block;
+  margin: 18px auto 0 auto;
+  text-align: center;
+}
+
+.tour-card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

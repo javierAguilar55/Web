@@ -1,0 +1,28 @@
+footer {
+  background: #9797974d;
+  color: #23262b;
+}
+.footer-main, .footer-bottom {
+  background: transparent;
+}
+.footer-logo img {
+  filter: none;
+}
+.footer-section strong, .footer-section a, .footer-section span {
+  color: #23262b;
+}
+.footer-section a {
+  text-decoration: none;
+  transition: color 0.18s;
+}
+.footer-section a:hover {
+  color: #ff7f50;
+}
+.footer-bottom {
+  border-top: 1px solid #bbb;
+  margin-top: 18px;
+  padding-top: 8px;
+  font-size: 0.98rem;
+  color: #23262b;
+  background: transparent;
+}
