@@ -1,78 +1,99 @@
 // Página: inicialización de búsqueda y tarjetas en Tours
 import { setupSearchBar } from '../molecules/search-bar.js';
 import { setupTourCard } from '../molecules/tour-card.js';
+import { ModalInfoTour } from '../organisms/modalInfo.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Filtro por búsqueda (filtros de la página)
+
+
+  // Filtros robustos para tours
   const searchInput = document.querySelector('.tour-filters-input');
-  if (searchInput) setupSearchBar(searchInput, '.tour-card');
-
-  // Filtro por búsqueda (navbar)
-  const navbarInput = document.querySelector('.navbar-tour-search');
-  const navbarBtn = document.querySelector('.navbar-tour-search-btn');
-  function filtrarPorNavbar() {
-    const valor = (navbarInput.value || '').toLowerCase().trim();
-    document.querySelectorAll('.tour-card').forEach(card => {
-      const titulo = card.querySelector('h3')?.textContent.toLowerCase() || '';
-      const desc = card.querySelector('p')?.textContent.toLowerCase() || '';
-      if (titulo.includes(valor) || desc.includes(valor)) {
-        card.style.display = '';
-      } else {
-        card.style.display = 'none';
-      }
-    });
-  }
-  if (navbarInput && navbarBtn) {
-    navbarBtn.onclick = filtrarPorNavbar;
-    navbarInput.addEventListener('keyup', function(e) {
-      if (e.key === 'Enter') filtrarPorNavbar();
-    });
-  }
-
-  // Filtros por selects y botón
   const selects = document.querySelectorAll('.tour-filters-select');
   const form = document.querySelector('.tour-filters');
+
   function normalizar(str) {
     return (str || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
   }
-  function filtrarTours() {
-    const dificultad = selects[0].value;
-    const duracion = selects[1].value;
+
+  function getDificultad(card) {
+    const badge = card.querySelector('.tour-badge');
+    if (!badge) return '';
+    const txt = normalizar(badge.textContent);
+    if (txt.includes('facil')) return 'facil';
+    if (txt.includes('fácil')) return 'facil';
+    if (txt.includes('moderado')) return 'media';
+    if (txt.includes('desafiante')) return 'dificil';
+    return '';
+  }
+
+  function getDuracion(card) {
+    // Busca el primer span de .tour-meta que contenga un número
+    const spans = card.querySelectorAll('.tour-meta span');
+    for (let s of spans) {
+      const match = s.textContent.match(/(\d+)/);
+      if (match) return parseInt(match[1]);
+    }
+    return 0;
+  }
+
+  function filtrarToursRobusto() {
+    const texto = normalizar(searchInput?.value || '').trim();
+    const dificultad = selects[0]?.value;
+    const duracion = selects[1]?.value;
     document.querySelectorAll('.tour-card').forEach(card => {
       let mostrar = true;
+      // Filtro por texto
+      if (texto) {
+        const titulo = normalizar(card.querySelector('h3')?.textContent || '');
+        const desc = normalizar(card.querySelector('p')?.textContent || '');
+        if (!titulo.includes(texto) && !desc.includes(texto)) mostrar = false;
+      }
       // Filtro por dificultad
-      if (dificultad) {
-        const badge = card.querySelector('.tour-badge');
-        if (badge) {
-          const badgeText = normalizar(badge.textContent);
-          if (dificultad === 'facil' && !(badgeText.includes('facil') || badgeText.includes('fácil'))) mostrar = false;
-          if (dificultad === 'media' && !badgeText.includes('moderado')) mostrar = false;
-          if (dificultad === 'dificil' && !badgeText.includes('desafiante')) mostrar = false;
-        } else {
-          mostrar = false;
-        }
+      if (mostrar && dificultad) {
+        if (getDificultad(card) !== dificultad) mostrar = false;
       }
       // Filtro por duración
       if (mostrar && duracion) {
-        const meta = card.querySelector('.tour-meta span');
-        if (meta) {
-          const metaText = normalizar(meta.textContent);
-          let dias = 0;
-          const match = metaText.match(/(\d+)/);
-          if (match) dias = parseInt(match[1]);
-          if (duracion === 'corta' && dias !== 1) mostrar = false;
-          if (duracion === 'media' && (dias < 2 || dias > 3)) mostrar = false;
-          if (duracion === 'larga' && dias < 4) mostrar = false;
-        } else {
-          mostrar = false;
-        }
+        const dias = getDuracion(card);
+        if (duracion === 'corta' && dias !== 1) mostrar = false;
+        if (duracion === 'media' && (dias < 2 || dias > 3)) mostrar = false;
+        if (duracion === 'larga' && dias < 4) mostrar = false;
       }
       card.style.display = mostrar ? '' : 'none';
     });
   }
-  if (form) form.addEventListener('submit', e => { e.preventDefault(); filtrarTours(); });
 
-  document.querySelectorAll('.tour-card').forEach(setupTourCard);
+  // Solo filtrar al hacer submit (botón o Enter)
+  if (form) form.addEventListener('submit', e => {
+    e.preventDefault();
+    filtrarToursRobusto();
+  });
+
+
+  // Mostrar modal al hacer clic en la tarjeta (excepto botón Reservar)
+  document.querySelectorAll('.tour-card').forEach(card => {
+    setupTourCard(card);
+    card.addEventListener('click', function(e) {
+      // No abrir modal si el click fue en el botón Reservar
+      if (e.target.closest('.tour-btn')) return;
+      const nombre = card.querySelector('h3')?.textContent || '';
+      const desc = card.querySelector('p')?.textContent || '';
+      const imgSrc = card.querySelector('img')?.src || '';
+      const precio = card.querySelector('.tour-price')?.textContent || '';
+      // Extra info
+      let duracion = '';
+      let dificultad = '';
+      const badge = card.querySelector('.tour-badge');
+      if (badge) {
+        dificultad = badge.textContent.trim();
+      }
+      const metaSpans = card.querySelectorAll('.tour-meta span');
+      if (metaSpans.length > 0) {
+        duracion = metaSpans[0].textContent.trim();
+      }
+      ModalInfoTour({ nombre, desc, imgSrc, precio, info: '', duracion, dificultad });
+    });
+  });
 
   // Redireccionar al hacer clic en los botones de reservar
   document.querySelectorAll('.tour-btn').forEach(btn => {

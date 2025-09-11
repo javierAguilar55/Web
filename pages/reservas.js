@@ -85,6 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const params = new URLSearchParams(window.location.search);
   let tourParam = params.get('tour');
   let destinoParam = params.get('destino');
+  let nombreParam = params.get('nombre');
   const inputTour = document.getElementById('tour');
   if (inputTour) {
     // Si viene de home, puede ser destino o tour destacado
@@ -92,6 +93,8 @@ document.addEventListener('DOMContentLoaded', () => {
       inputTour.value = decodeURIComponent(tourParam);
     } else if (destinoParam) {
       inputTour.value = decodeURIComponent(destinoParam);
+    } else if (nombreParam) {
+      inputTour.value = decodeURIComponent(nombreParam);
     } else {
       inputTour.value = '';
     }

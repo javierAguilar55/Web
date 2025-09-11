@@ -4,9 +4,12 @@
     <meta charset="UTF-8" />
     <title>Reservas - Tours Tours</title>
     <link rel="icon" type="image/png" href="../assets/img/logos/logo.png" />
-  <link rel="stylesheet" href="../templates/styles.css" />
-  <link rel="stylesheet" href="../pages/reservas.css" />
-  <link rel="stylesheet" href="../molecules/search-bar.css" />
+    <link rel="stylesheet" href="../templates/styles.css" />
+    <link rel="stylesheet" href="../pages/reservas.css" />
+    <link rel="stylesheet" href="../molecules/search-bar.css" />
+    <link rel="stylesheet" href="../molecules/navbar-links.css" />
+    <link rel="stylesheet" href="../molecules/footer-bg.css" />
+    <link rel="stylesheet" href="../molecules/footer-social-icons.css" />
   </head>
   <body>
     <header>
@@ -19,11 +22,12 @@
           />
         </a>
         <nav>
-          <a href="../index.html">Home</a>
-          <a href="destinos.html">Destinos</a>
-          <a href="tours.html">Tours</a>
-          <a href="contacto.html">Contacto</a>
-          <a href="reservas.html">Reservas</a>
+          <a href="../index.html" data-i18n="home">Inicio</a>
+          <a href="destinos.html" data-i18n="destinations">Destinos</a>
+          <a href="tours.html" data-i18n="tours">Tours</a>
+          <a href="contacto.html" data-i18n="contact">Contacto</a>
+          <a href="reservas.html" data-i18n="bookings">Reservas</a>
+          <div class="lang-switcher" style="margin-left:18px;"></div>
         </nav>
       </div>
     </header>
@@ -32,7 +36,7 @@
         <div class="reservas-form" id="form-destino" style="width:100%;max-width:600px;margin:auto;display:none;">
           <h1>Reserva tu Destino</h1>
           <p>Completa el formulario para reservar tu destino favorito. Te contactaremos para confirmar tu reserva.</p>
-           <form action="https://formsubmit.co/marche.dev00@gmail.com" method="POST">
+           <form action="https://formsubmit.co/marche.dev00@gmail.com" method="POST" target="_blank">
             <label for="nombre-destino">Nombre</label>
               <input type="text" id="nombre-destino" name="nombre" placeholder="Tu nombre" required />
                 <input type="hidden" name="_captcha" value="false">
@@ -109,13 +113,16 @@
     </style>
     <footer>
       <div class="footer-main">
+        <div class="footer-logo" style="display:flex;align-items:center;justify-content:center;margin-bottom:18px;">
+          <img src="../assets/img/logos/logo.png" alt="Logo Tours Tours" style="height:80px;width:auto;display:block;margin-right:12px;" />
+        </div>
         <div class="footer-section">
-          <strong>Contacto:</strong><br>
+          <strong data-i18n="contactTitle">Contacto:</strong><br>
           <a href="mailto:info@tourstours.com">ToursTours@gmail.com</a><br>
           <span>Tel: +591 64529906</span>
         </div>
         <div class="footer-section">
-          <strong>Síguenos:</strong><br>
+          <strong data-i18n="followUs">Síguenos:</strong><br>
           <div class="footer-social-icons">
             <a href="https://www.facebook.com/" title="Facebook" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50"><path d="M25,3C12.85,3,3,12.85,3,25c0,11.03,8.125,20.137,18.712,21.728V30.831h-5.443v-5.783h5.443v-3.848 c0-6.371,3.104-9.168,8.399-9.168c2.536,0,3.877,0.188,4.512,0.274v5.048h-3.612c-2.248,0-3.033,2.131-3.033,4.533v3.161h6.588 l-0.894,5.783h-5.694v15.944C38.716,45.318,47,36.137,47,25C47,12.85,37.15,3,25,3z"/></svg>
@@ -129,19 +136,19 @@
           </div>
         </div>
         <div class="footer-section">
-          <strong>Enlaces:</strong><br>
-          <a href="../index.html">Home</a> |
-          <a href="destinos.html">Destinos</a> |
-          <a href="tours.html">Tours</a> |
-          <a href="contacto.html">Contacto</a> |
-          <a href="reservas.html">Reservas</a>
+          <strong data-i18n="links">Enlaces:</strong><br>
+          <a href="../index.html" data-i18n="home">Home</a> |
+          <a href="destinos.html" data-i18n="destinations">Destinos</a> |
+          <a href="tours.html" data-i18n="tours">Tours</a> |
+          <a href="contacto.html" data-i18n="contact">Contacto</a> |
+          <a href="reservas.html" data-i18n="bookings">Reservas</a>
         </div>
       </div>
-      <div class="footer-bottom">
-  <span>&copy; 2025 Nexus Solutions. Todos los derechos reservados.</span>
-        <a href="#" style="margin-left:10px;">Aviso legal</a>
-      </div>
-    </footer>
+        <div class="footer-bottom" style="text-align:center;margin-top:18px;">
+          <span>&copy; 2025 Nexus Solutions. <span data-i18n="all_rights">Todos los derechos reservados.</span></span>
+          <a href="../assets/pdf/Aviso-Legal.pdf" target="_blank" style="margin-left:10px;color:#ffb37b;text-decoration:underline;" data-i18n="legal_notice">Aviso legal</a>
+        </div>
+      </footer>
     </body>
-    <script type="module" src="../pages/reservas.js"></script>
+  <script type="module" src="../pages/reservas.js"></script>
 </html>

@@ -131,9 +131,13 @@ footer {
 }
 /* Logo Reservas */
 .logo-img {
-  height: 90px;
+  height: 64px;
+  max-width: 64px;
   width: auto;
   margin-right: 2.5rem;
+  margin-left: 18px;
+  display: block;
+  filter: drop-shadow(0 2px 8px rgba(33,147,176,0.08));
 }
 .navbar-row nav {
   display: flex;
@@ -250,10 +254,10 @@ footer a {
   box-shadow: 0 4px 24px rgba(0,0,0,0.18);
   padding: 3rem 2.5rem;
   max-width: 680px; /* Reducido de 980px */
-  margin: 45px auto 2.5rem auto;
+  margin: 20px auto 2.5rem auto;
   color: #fff;
   border: 1.5px solid #22242a;
-  margin-top: 6.5rem; /* Ajuste para header fijo */
+  margin-top: 2.5rem; /* Menos espacio superior */
 }
 .reservas-form, .reservas-info {
   flex: 1;
