@@ -1,0 +1,92 @@
+/* Contenedor para mostrar 3 cards por fila en el modal de búsqueda */
+.modal-cards-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px 18px;
+  justify-items: center;
+  align-items: stretch;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media (max-width: 900px) {
+  .modal-cards-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  .modal-cards-container {
+    grid-template-columns: 1fr;
+  }
+}
+/* Estilos exclusivos para las cards del modal de búsqueda */
+
+.modal-tour-card, .modal-destino-card {
+  background: #252424;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(44, 62, 80, 0.10);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: box-shadow 0.2s;
+  width: 280px;
+  min-width: 220px;
+  max-width: 100%;
+  height: 420px;
+  min-height: 340px;
+  max-height: 100%;
+  box-sizing: border-box;
+}
+.modal-tour-card:hover, .modal-destino-card:hover {
+  box-shadow: 0 4px 24px rgba(44, 62, 80, 0.18);
+}
+.modal-tour-card img, .modal-destino-card img {
+  border-radius: 12px;
+  margin-bottom: 12px;
+  max-width: 180px;
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  display: block;
+}
+.modal-tour-card-content, .modal-destino-card-content {
+  width: 100%;
+  text-align: center;
+}
+.modal-tour-nombre, .modal-destino-nombre {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #fff;
+}
+.modal-tour-descripcion, .modal-destino-descripcion {
+  font-size: 1rem;
+  color: #fff;
+  margin-bottom: 8px;
+}
+.modal-tour-meta, .modal-destino-meta {
+  font-size: 0.95rem;
+  color: #7a8fa6;
+  margin-bottom: 12px;
+}
+.modal-tour-price {
+  font-weight: bold;
+  color: #ff6f3c;
+  margin-left: 8px;
+}
+.modal-tour-btn, .modal-destino-btn {
+  background: #ff6f3c;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: background 0.2s;
+}
+.modal-tour-btn:hover, .modal-destino-btn:hover {
+  background: #ff8c5a;
+}
