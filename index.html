@@ -1,40 +1,90 @@
-<!-- Página principal basada en main-template.html -->
 <!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <title>Home - Tours Tours</title>
-
-  <!-- Favicon cambiado por el logo de la empresa -->
-  <link rel="icon" type="image/png" href="../assets/img/logos/logo.png" />
-  <link rel="stylesheet" href="pages/home.css" />
-  <link rel="stylesheet" href="organisms/main-carousel.css" />
-  <link rel="stylesheet" href="../molecules/search-bar.css" />
+    <title>inicio - Tours Tours</title>
+    <link rel="icon" type="image/png" href="assets/img/logos/logo.png" />
+    <link rel="stylesheet" href="pages/home.css" />
+    <link rel="stylesheet" href="pages/about-us-home.css" />
+    <link rel="stylesheet" href="organisms/main-carousel.css" />
+    <link rel="stylesheet" href="molecules/buscar-icono.css" />
+    <link rel="stylesheet" href="molecules/navbar-links.css" />
+    <link rel="stylesheet" href="molecules/user-avatar-img.css" />
+    <link rel="stylesheet" href="molecules/footer-social-icons.css" />
+    <link rel="stylesheet" href="molecules/footer-bg.css" />
+    <link rel="stylesheet" href="../molecules/search-bar.css" />
+    <link rel="stylesheet" href="organisms/modal-busqueda.css" />
+    <link rel="stylesheet" href="molecules/modal-busqueda-custom.css" />
+    <link rel="stylesheet" href="organisms/modal-cards.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   <body>
-    <!-- Header con menú de navegación -->
     <header>
       <div class="navbar-row">
-        <a href="index.html" aria-label="Ir a la página de inicio">
-          <img
-            src="assets/img/logos/logo.png"
-            alt="Logo Tours Tours"
-            class="logo-img"
-          />
-        </a>
-        <nav>
-          <a href="index.html">Home</a>
-          <a href="pages/destinos.html">Destinos</a>
-          <a href="pages/tours.html">Tours</a>
-          <a href="pages/contacto.html">Contacto</a>
-          <a href="pages/reservas.html">Reservas</a>
-        </nav>
-        <div class="search-bar">
-          <input type="text" class="input navbar-search" placeholder="Buscar tour o destino" />
-          <button class="btn navbar-search-btn">Buscar</button>
+        <div class="navbar-logo-hamburger" style="display:flex;align-items:center;gap:2px;">
+          <a href="index.html" aria-label="Ir a la página de inicio">
+            <img
+              src="assets/img/logos/logo.png"
+              alt="Logo Tours Tours"
+              class="logo-img"
+            />
+          </a>
+          <button class="navbar-hamburger" id="navbar-hamburger" aria-label="Abrir menú">
+            <svg class="navbar-hamburger-icon" viewBox="0 0 32 32" width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+              <rect y="7" width="32" height="3.5" rx="1.5" fill="#263248"/>
+              <rect y="14" width="32" height="3.5" rx="1.5" fill="#263248"/>
+              <rect y="21" width="32" height="3.5" rx="1.5" fill="#263248"/>
+            </svg>
+          </button>
         </div>
-      </div>
+        <nav style="background: transparent;">
+          <a href="index.html" data-i18n="home">Inicio</a>
+          <a href="pages/destinos.html" data-i18n="destinations">Destinos</a>
+          <a href="pages/tours.html" data-i18n="tours">Tours</a>
+          <a href="pages/contacto.html" data-i18n="contact">Contacto</a>
+          <a href="pages/reservas.html" data-i18n="bookings">Reservas</a>
+          <button class="icon-btn" id="open-search-modal" aria-label="Abrir buscador">
+            <img src="assets/icons/buscar.svg" alt="Buscar" width="28" height="28" />
+          </button>
+          <div class="search-bar"></div>
+          <div id="modal-busqueda-bg" class="modal-busqueda-bg" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:9999;align-items:center;justify-content:center;background:rgba(30,34,48,0.35);backdrop-filter:blur(2px);">
+            <div id="modal-busqueda" class="modal-busqueda" style="margin:auto;max-height:80vh;overflow-y:auto;">
+              <div class="buscador-row" style="display:flex;gap:12px;width:100%;justify-content:center;align-items:center;position:relative;">
+                <input type="text" class="input navbar-search" placeholder="Buscar destino..." style="min-width:220px;padding:8px 12px;border-radius:8px;border:1.5px solid #d1d5db;font-size:1.08rem;outline:none;box-shadow:0 1px 4px rgba(30,40,60,0.08);transition:border 0.2s;" />
+                <button class="btn navbar-search-btn" style="background:linear-gradient(90deg,#ff6b3d 60%,#ff914d 100%);color:#fff;border-radius:8px;font-weight:700;padding:8px 28px;font-size:1.08rem;box-shadow:0 2px 12px rgba(255,107,61,0.13);border:none;letter-spacing:0.5px;transition:background 0.18s,box-shadow 0.18s;cursor:pointer;outline:none;filter:drop-shadow(0 2px 8px #ff6b3d33);" onmouseover="this.style.background='linear-gradient(90deg,#ff914d 60%,#ff6b3d 100%)'" onmouseout="this.style.background='linear-gradient(90deg,#ff6b3d 60%,#ff914d 100%)'">Buscar</button>
+                <button class="cerrar-modal-x" style="position:absolute;top:-18px;right:-18px;background:#ff6b3d;color:#fff;border:none;border-radius:50%;width:38px;height:38px;font-size:1.7rem;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.10);">&times;</button>
+              </div>
+              <div id="resultados-busqueda"></div>
+            </div>
+          </div>
+        </nav>
+        <div class="lang-switcher" style="margin-left:18px;">
+    </div>
+        
+    <script>
+      // Navbar hamburguesa responsivo
+      const hamburger = document.getElementById('navbar-hamburger');
+      const navbarRow = document.querySelector('.navbar-row');
+      const nav = navbarRow.querySelector('nav');
+      hamburger.addEventListener('click', () => {
+        navbarRow.classList.toggle('navbar-open');
+      });
+      // Cerrar menú al hacer click en un enlace (opcional)
+      nav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          navbarRow.classList.remove('navbar-open');
+        });
+      });
+      // Buscador móvil: abrir modal
+      const openSearchMobile = document.getElementById('open-search-modal-mobile');
+      if(openSearchMobile) {
+        openSearchMobile.addEventListener('click', function(e) {
+          e.preventDefault();
+          document.getElementById('modal-busqueda-bg').style.display = 'flex';
+        });
+      }
+    </script>
+          
     </header>
     <section class="main-carousel">
       <div class="carousel-container">
@@ -49,40 +99,37 @@
     <section class="destacados">
   <h2 class="section-title">Destinos</h2>
       <div class="destinos-list">
-        <div class="destino-card dark-card">
+        <div class="inicio-card">
           <img src="assets/img/destinations/salar-uyuni.jpg" alt="Salar de Uyuni" />
-          <div class="card-content">
-            <h3 class="destino-nombre">Salar de Uyuni</h3>
-            <div class="card-rating">
-              <span>★ 4.9</span> <span class="card-reviews">(75 reseñas)</span>
+          <div class="inicio-card-content">
+            <h3>Salar de Uyuni</h3>
+            <p>Duración: 3 días</p>
+            <p>Desde <span class="price-highlight">Bs 1000</span></p>
+            <div class="botones-inicio">
+              <button class="inicio-btn" data-type="destino" data-name="Salar de Uyuni">Reserva Ahora</button>
             </div>
-            <p class="destino-descripcion card-desc">Duración: 3 días</p>
-            <p class="card-price">Desde <span class="price-highlight">Bs 1000</span></p>
-            <button class="card-btn" data-type="destino" data-name="Salar de Uyuni">Reserva Ahora</button>
           </div>
         </div>
-        <div class="destino-card dark-card">
+        <div class="inicio-card">
           <img src="assets/img/destinations/Valle-Luna.jpg" alt="Valle de la Luna" />
-          <div class="card-content">
-            <h3 class="destino-nombre">Valle de la Luna</h3>
-            <div class="card-rating">
-              <span>★ 4.8</span> <span class="card-reviews">(62 reseñas)</span>
+          <div class="inicio-card-content">
+            <h3>Valle de la Luna</h3>
+            <p>Duración: 1 día</p>
+            <p>Desde <span class="price-highlight">Bs 350</span></p>
+            <div class="botones-inicio">
+              <button class="inicio-btn" data-type="destino" data-name="Valle de la Luna">Reserva Ahora</button>
             </div>
-            <p class="destino-descripcion card-desc">Duración: 1 día</p>
-            <p class="card-price">Desde <span class="price-highlight">Bs 350</span></p>
-            <button class="card-btn" data-type="destino" data-name="Valle de la Luna">Reserva Ahora</button>
           </div>
         </div>
-        <div class="destino-card dark-card">
+        <div class="inicio-card">
           <img src="assets/img/destinations/La-paz.jpg" alt="La Paz" />
-          <div class="card-content">
-            <h3 class="destino-nombre">La Paz</h3>
-            <div class="card-rating">
-              <span>★ 4.7</span> <span class="card-reviews">(50 reseñas)</span>
+          <div class="inicio-card-content">
+            <h3>La Paz</h3>
+            <p>Duración: 2 días</p>
+            <p>Desde <span class="price-highlight">Bs 1200</span></p>
+            <div class="botones-inicio">
+              <button class="inicio-btn" data-type="destino" data-name="La Paz">Reserva Ahora</button>
             </div>
-            <p class="destino-descripcion card-desc">Duración: 2 días</p>
-            <p class="card-price">Desde <span class="price-highlight">Bs 1200</span></p>
-            <button class="card-btn" data-type="destino" data-name="La Paz">Reserva Ahora</button>
           </div>
         </div>
       </div>
@@ -91,53 +138,66 @@
     <section class="destacados">
   <h2 class="section-title">Tours</h2>
       <div class="tours-list">
-        <div class="tour-card dark-card">
+        <div class="inicio-card">
           <img src="assets/img/tours/La-Paz/Lago-Titicaca.jfif" alt="Lago Titicaca" />
-          <div class="card-content">
-            <h3 class="tour-nombre">Lago Titicaca</h3>
-            <div class="card-rating">
-              <span>★ 4.9</span> <span class="card-reviews">(95 reseñas)</span>
+          <div class="inicio-card-content">
+            <h3>Lago Titicaca</h3>
+            <p>Duración: 2 días</p>
+            <p>Desde <span class="price-highlight">Bs 1200</span></p>
+            <div class="botones-inicio">
+              <button class="inicio-btn" data-type="tour" data-name="Lago Titicaca">Reserva Ahora</button>
             </div>
-            <p class="tour-descripcion card-desc">Duración: 2 días</p>
-            <p class="card-price">Desde <span class="price-highlight">Bs 1200</span></p>
-            <button class="card-btn" data-type="tour" data-name="Lago Titicaca">Reserva Ahora</button>
           </div>
         </div>
-        <div class="tour-card dark-card">
+        <div class="inicio-card">
           <img src="assets/img/tours/Cochabamba/Cristo-Concordia.jpg" alt="Cristo de la Concordia" />
-          <div class="card-content">
-            <h3 class="tour-nombre">Cristo de la Concordia</h3>
-            <div class="card-rating">
-              <span>★ 4.8</span> <span class="card-reviews">(82 reseñas)</span>
+          <div class="inicio-card-content">
+            <h3>Cristo de la Concordia</h3>
+            <p>Duración: 1 día</p>
+            <p>Desde <span class="price-highlight">Bs 200</span></p>
+            <div class="botones-inicio">
+              <button class="inicio-btn" data-type="tour" data-name="Cristo de la Concordia">Reserva Ahora</button>
             </div>
-            <p class="tour-descripcion card-desc">Duración: 1 día</p>
-            <p class="card-price">Desde <span class="price-highlight">Bs 200</span></p>
-            <button class="card-btn" data-type="tour" data-name="Cristo de la Concordia">Reserva Ahora</button>
           </div>
         </div>
-        <div class="tour-card dark-card">
+        <div class="inicio-card">
           <img src="assets/img/tours/Potosi/Salar-Uyuni.jpg" alt="Salar de Uyuni Tour" />
-          <div class="card-content">
-            <h3 class="tour-nombre">Salar de Uyuni Tour</h3>
-            <div class="card-rating">
-              <span>★ 5.0</span> <span class="card-reviews">(60 reseñas)</span>
+          <div class="inicio-card-content">
+            <h3>Salar de Uyuni Tour</h3>
+            <p>Duración: 3 días</p>
+            <p>Desde <span class="price-highlight">Bs 1000</span></p>
+            <div class="botones-inicio">
+              <button class="inicio-btn" data-type="tour" data-name="Salar de Uyuni Tour">Reserva Ahora</button>
             </div>
-            <p class="tour-descripcion card-desc">Duración: 3 días</p>
-            <p class="card-price">Desde <span class="price-highlight">Bs 1000</span></p>
-            <button class="card-btn" data-type="tour" data-name="Salar de Uyuni Tour">Reserva Ahora</button>
           </div>
         </div>
       </div>
     </section>
     <!-- Sección Sobre Nosotros -->
-    <section class="about-us">
-      <h2>Sobre Nosotros</h2>
-      <p>
-        Somos una empresa dedicada a mostrarte lo mejor de Bolivia. Nuestro
-        objetivo es brindarte experiencias inolvidables a través de tours únicos
-        y personalizados por los destinos más impresionantes del país.
-      </p>
-    </section>
+    <div class="about-us-outer" style="width:100vw;display:flex;justify-content:center;background:transparent;margin:0;padding:0;">
+      <section class="about-us about-us-side">
+  <div class="about-us-text">
+        <div class="about-us-img">
+          <video src="assets/video/equipo.mp4" alt="Foto equipo Tours Tours" autoplay muted loop></video>
+        </div>
+          <h2>Sobre Nosotros</h2>
+          <p>
+            En <b>Tours Tours</b> somos apasionados por la aventura y la cultura boliviana. Nuestro equipo está formado por guías expertos y amantes de los viajes, comprometidos en ofrecerte:
+          </p>
+          <ul>
+            <li> Experiencias auténticas y seguras en cada destino.</li>
+            <li> Atención personalizada antes, durante y después de tu viaje.</li>
+            <li> Opciones para grupos, familias, parejas y viajeros solitarios.</li>
+            <li> Asesoría gratuita para armar tu itinerario ideal.</li>
+          </ul>
+          <p>
+            <b>¿Por qué elegirnos?</b><br>
+            Más de 10 años de experiencia, alianzas con operadores locales y cientos de viajeros satisfechos nos respaldan. ¡Descubre Bolivia con nosotros!
+          </p>
+          <a href="pages/contacto.html" class="about-btn">Contáctanos</a>
+        </div>
+      </section>
+    </div>
     <!-- Comentarios de clientes -->
   <section class="testimonios-cards" style="padding: 40px 0 60px 0;">
       <h2 class="section-title" style="text-align:center; color:#23262b; font-size:2.2rem; margin-bottom:32px;">Lo Que Dicen Nuestros Aventureros</h2>
@@ -145,7 +205,7 @@
         <div class="testimonio-card-img">
           <p class="testimonio-text-img">“El tour al Salar de Uyuni fue una experiencia inolvidable, la organización y el guía fueron excelentes.”</p>
           <div class="testimonio-user-img">
-            <div class="user-avatar-img" style="background:#eafeea;"></div>
+            <div class="user-avatar-img" style="background:#eafeea;">C</div>
             <div>
               <span class="user-name-img">Carla M.</span><br />
               <span class="user-tour-img">Salar de Uyuni</span>
@@ -155,7 +215,7 @@
         <div class="testimonio-card-img">
           <p class="testimonio-text-img">“Me encantó el recorrido por el Valle de la Luna, todo muy seguro y divertido. ¡Repetiría sin dudarlo!”</p>
           <div class="testimonio-user-img">
-            <div class="user-avatar-img" style="background:#eaf3fe;"></div>
+            <div class="user-avatar-img" style="background:#eaf3fe;">L</div>
             <div>
               <span class="user-name-img">Luis F.</span><br />
               <span class="user-tour-img">Valle de la Luna</span>
@@ -165,7 +225,7 @@
         <div class="testimonio-card-img">
           <p class="testimonio-text-img">“Reservé el tour al Lago Titicaca y superó mis expectativas. Muy recomendable para familias.”</p>
           <div class="testimonio-user-img">
-            <div class="user-avatar-img" style="background:#fefeea;"></div>
+            <div class="user-avatar-img" style="background:#fefeea;">A</div>
             <div>
               <span class="user-name-img">Andrea P.</span><br />
               <span class="user-tour-img">Lago Titicaca</span>
@@ -177,13 +237,16 @@
     <!-- Footer -->
     <footer>
       <div class="footer-main">
+        <div class="footer-logo" style="display:flex;align-items:center;justify-content:center;margin-bottom:18px;">
+          <img src="assets/img/logos/logo.png" alt="Logo Tours Tours" style="height:80px;width:auto;display:block;margin-right:12px;" />
+        </div>
         <div class="footer-section">
-          <strong>Contacto:</strong><br>
+          <strong data-i18n="contactTitle">Contacto:</strong><br>
           <a href="mailto:info@tourstours.com">ToursTours@gmail.com</a><br>
           <span>Tel: +591 64529906</span>
         </div>
         <div class="footer-section">
-          <strong>Síguenos:</strong><br>
+          <strong data-i18n="followUs">Síguenos:</strong><br>
           <div class="footer-social-icons">
             <a href="https://www.facebook.com/" title="Facebook" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50"><path d="M25,3C12.85,3,3,12.85,3,25c0,11.03,8.125,20.137,18.712,21.728V30.831h-5.443v-5.783h5.443v-3.848 c0-6.371,3.104-9.168,8.399-9.168c2.536,0,3.877,0.188,4.512,0.274v5.048h-3.612c-2.248,0-3.033,2.131-3.033,4.533v3.161h6.588 l-0.894,5.783h-5.694v15.944C38.716,45.318,47,36.137,47,25C47,12.85,37.15,3,25,3z"/></svg>
@@ -197,21 +260,21 @@
           </div>
         </div>
         <div class="footer-section">
-          <strong>Enlaces:</strong><br>
-          <a href="index.html">Home</a> |
-          <a href="pages/destinos.html">Destinos</a> |
-          <a href="pages/tours.html">Tours</a> |
-          <a href="pages/contacto.html">Contacto</a> |
-          <a href="pages/reservas.html">Reservas</a>
+          <strong data-i18n="links">Enlaces:</strong><br>
+          <a href="../index.html" data-i18n="home">Home</a> |
+          <a href="destinos.html" data-i18n="destinations">Destinos</a> |
+          <a href="tours.html" data-i18n="tours">Tours</a> |
+          <a href="contacto.html" data-i18n="contact">Contacto</a> |
+          <a href="reservas.html" data-i18n="bookings">Reservas</a>
         </div>
       </div>
-      <div class="footer-bottom">
-  <span>&copy; 2025 Nexus Solutions. Todos los derechos reservados.</span>
-        <a href="#" style="margin-left:10px;">Aviso legal</a>
-      </div>
-    </footer>
-    </body>
-    <script type="module" src="pages/home.js"></script>
+        <div class="footer-bottom" style="text-align:center;margin-top:18px;">
+          <span>&copy; 2025 Nexus Solutions. <span data-i18n="all_rights">Todos los derechos reservados.</span></span>
+          <a href="../assets/pdf/Aviso-Legal.pdf" target="_blank" style="margin-left:10px;color:#ffb37b;text-decoration:underline;" data-i18n="legal_notice">Aviso legal</a>
+        </div>
+      </footer>
+  <!-- Burbuja multilenguaje eliminada -->
+  <script type="module" src="pages/home.js"></script>
   <script src="organisms/main-carousel.js"></script>
   </body>
 </html>
