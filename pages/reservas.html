@@ -11,7 +11,7 @@
   <body>
     <header>
       <div class="navbar-row">
-        <a href="../home.html" aria-label="Ir a la página de inicio">
+        <a href="../index.html" aria-label="Ir a la página de inicio">
           <img
             src="../assets/img/logos/logo.png"
             alt="Logo Tours Tours"
@@ -19,7 +19,7 @@
           />
         </a>
         <nav>
-          <a href="../home.html">Home</a>
+          <a href="../index.html">Inicio</a>
           <a href="destinos.html">Destinos</a>
           <a href="tours.html">Tours</a>
           <a href="contacto.html">Contacto</a>
@@ -32,9 +32,11 @@
         <div class="reservas-form" id="form-destino" style="width:100%;max-width:600px;margin:auto;display:none;">
           <h1>Reserva tu Destino</h1>
           <p>Completa el formulario para reservar tu destino favorito. Te contactaremos para confirmar tu reserva.</p>
-          <form>
+           <form action="https://formsubmit.co/marche.dev00@gmail.com" method="POST" target="_blank">
             <label for="nombre-destino">Nombre</label>
-            <input type="text" id="nombre-destino" name="nombre" placeholder="Tu nombre" required />
+              <input type="text" id="nombre-destino" name="nombre" placeholder="Tu nombre" required />
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
             <label for="correo-destino">Correo Electrónico</label>
             <input type="email" id="correo-destino" name="correo" placeholder="tu@email.com" required />
             <label for="destino">Destino</label>
@@ -48,9 +50,11 @@
         <div class="reservas-form" id="form-tour" style="width:100%;max-width:600px;margin:auto;display:none;">
           <h1>Reserva tu Tour</h1>
           <p>Completa el formulario para reservar tu próxima aventura. Te contactaremos para confirmar tu reserva.</p>
-          <form>
+           <form action="https://formsubmit.co/marche.dev00@gmail.com" method="POST">
             <label for="nombre-tour">Nombre</label>
-            <input type="text" id="nombre-tour" name="nombre" placeholder="Tu nombre" required />
+              <input type="text" id="nombre-tour" name="nombre" placeholder="Tu nombre" required />
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
             <label for="correo-tour">Correo Electrónico</label>
             <input type="email" id="correo-tour" name="correo" placeholder="tu@email.com" required />
             <label for="tour">Tour o Destino</label>
@@ -59,10 +63,50 @@
             <label for="mensaje-tour">Mensaje</label>
             <textarea id="mensaje-tour" name="mensaje" placeholder="Escribe algún detalle adicional..." rows="4"></textarea>
             <button type="submit">Reservar</button>
+              <div class="mensaje-exito" id="mensajeExitoReserva" style="display:none;">¡Reserva enviada con éxito! Pronto nos pondremos en contacto contigo.</div>
           </form>
         </div>
       </div>
     </main>
+    <script>
+      // Mostrar mensaje de éxito sin recargar
+      document.addEventListener('DOMContentLoaded', function() {
+        const form = document.querySelector('.reservas-form form');
+        const mensaje = document.getElementById('mensajeExitoReserva');
+        if(form && mensaje) {
+          form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            fetch(form.action, {
+              method: 'POST',
+              body: new FormData(form),
+              headers: { 'Accept': 'application/json' }
+            }).then(response => {
+              if(response.ok) {
+                form.reset();
+                mensaje.style.display = 'block';
+                setTimeout(() => { mensaje.style.display = 'none'; }, 4000);
+              }
+            });
+          });
+        }
+      });
+    </script>
+    <style>
+      .mensaje-exito {
+        display: none;
+        margin: 20px auto;
+        padding: 16px 24px;
+        max-width: 500px;
+        border-radius: 8px;
+        background: linear-gradient(90deg, #e0ffe0 0%, #b2f7b2 100%);
+        color: #217a2b;
+        font-weight: 600;
+        text-align: center;
+        border: 1.5px solid #7ed957;
+        box-shadow: 0 2px 8px rgba(34,139,34,0.08);
+        font-size: 1.1em;
+      }
+    </style>
     <footer>
       <div class="footer-main">
         <div class="footer-section">
@@ -86,7 +130,7 @@
         </div>
         <div class="footer-section">
           <strong>Enlaces:</strong><br>
-          <a href="../home.html">Home</a> |
+          <a href="../index.html">Inicio</a> |
           <a href="destinos.html">Destinos</a> |
           <a href="tours.html">Tours</a> |
           <a href="contacto.html">Contacto</a> |

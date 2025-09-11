@@ -108,9 +108,13 @@ footer {
   margin-right: auto;
 }
 .logo-img {
-  height: 90px;
+  height: 64px;
+  max-width: 64px;
   width: auto;
-  margin: 0;
+  margin-right: 2.5rem;
+  margin-left: 18px;
+  display: block;
+  filter: drop-shadow(0 2px 8px rgba(33,147,176,0.08));
 }
 
 .navbar-row nav {
@@ -334,9 +338,9 @@ body {
 }
 
 header {
-  background: #fff;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-  padding: 18px 0 10px 0;
+  background: transparent;
+  box-shadow: none;
+  padding: 0;
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -281,9 +281,13 @@ footer {
 }
 /* Logo Destinos */
 .logo-img {
-  height: 90px;
+  height: 64px;
+  max-width: 64px;
   width: auto;
   margin-right: 2.5rem;
+  margin-left: 18px;
+  display: block;
+  filter: drop-shadow(0 2px 8px rgba(33,147,176,0.08));
 }
 .navbar-row nav {
   display: flex;

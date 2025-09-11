@@ -1,3 +1,9 @@
+/* Logo in footer */
+.footer-logo {
+  width: 90px;
+  display: block;
+  margin: 0 auto 10px auto;
+}
 .footer-section.social {
   display: flex;
   flex-direction: column;
@@ -35,9 +41,13 @@
 }
 /* Logo Contacto */
 .logo-img {
-  height: 90px;
+  height: 64px;
+  max-width: 64px;
   width: auto;
   margin-right: 2.5rem;
+  margin-left: 18px;
+  display: block;
+  filter: drop-shadow(0 2px 8px rgba(33,147,176,0.08));
 }
 .navbar-row nav {
   display: flex;
@@ -76,7 +86,7 @@
 /* HERO y caja principal */
 .contact-hero {
   text-align: center;
-  margin-top: 6.5rem; /* Ajuste para header fijo */
+  margin-top: 5rem; /* Ajuste para header fijo */
   margin-bottom: 1.5rem;
 }
 .contact-hero h1 {
